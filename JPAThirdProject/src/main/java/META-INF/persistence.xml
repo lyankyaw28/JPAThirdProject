@@ -4,7 +4,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="JPAThirdProject">
-		<class>jpa_jpql.bulk_data_operations.StudentBulkFetch</class>
+		<class>jpa_critria_api.select.StudentCritriaSelect</class>
+		<!-- <class>jpa_jpql.advanced_options.StudentJPQLAdvancedOptions</class> -->
+		<!-- <class>jpa_jpql.bulk_data_operations.StudentBulkFetch</class> -->
 		<!-- <class>jpa_jpql.basic_operations.StudentStaticeQuery</class> -->
 		<!-- <class>jpa_jpql.basic_operations.StudentDynamicQuery</class> -->
 		<!-- <class>jpa_cascading.persist_remove.StudentPersistRemove</class> <class>jpa_cascading.persist_remove.SubjectPersistRemove</class> -->
