@@ -1,37 +1,33 @@
-package jpa_critria_api.order_by;
+package jpa_critria_api.group_by;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import jpa_critria_api.StudentOrderBy;
 
-public class Asc {
+public class StudentGroup {
 	public static void main(String args[]) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAThirdProject");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<StudentOrderBy> cq = cb.createQuery(StudentOrderBy.class);
+		CriteriaQuery<Object[]> cq = cb.createQuery(Object[].class);
 		Root<StudentOrderBy> stud = cq.from(StudentOrderBy.class);
-		cq.orderBy(cb.asc(stud.get("s_age")));
-		CriteriaQuery<StudentOrderBy> select = cq.select(stud);
-		TypedQuery<StudentOrderBy> q = em.createQuery(select);
-		List<StudentOrderBy> list = q.getResultList();
-		System.out.print("s_id");
-		System.out.print("\t s_name");
-		System.out.println("\t s_age");
-		for (StudentOrderBy s : list) {
-			System.out.print(s.getS_id());
-			System.out.print("\t" + s.getS_name());
-			System.out.println("\t" + s.getS_age());
+		cq.multiselect(stud.get("s_age"), cb.count(stud)).groupBy(stud.get("s_age"));
+		System.out.print("s_age");
+		System.out.println("\t Count");
+		List<Object[]> list = em.createQuery(cq).getResultList();
+		for (Object[] object : list) {
+			System.out.println(object[0] + "     " + object[1]);
+
 		}
+
 		em.getTransaction().commit();
 		em.close();
 		emf.close();

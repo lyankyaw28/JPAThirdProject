@@ -1,4 +1,4 @@
-package jpa_critria_api.order_by;
+package jpa_critria_api.where;
 
 import java.util.List;
 
@@ -6,32 +6,40 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.AbstractQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import jpa_critria_api.StudentOrderBy;
 
-public class Asc {
+public class Between {
 	public static void main(String args[]) {
+
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAThirdProject");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<StudentOrderBy> cq = cb.createQuery(StudentOrderBy.class);
+		AbstractQuery<StudentOrderBy> cq = cb.createQuery(StudentOrderBy.class);
 		Root<StudentOrderBy> stud = cq.from(StudentOrderBy.class);
-		cq.orderBy(cb.asc(stud.get("s_age")));
-		CriteriaQuery<StudentOrderBy> select = cq.select(stud);
-		TypedQuery<StudentOrderBy> q = em.createQuery(select);
-		List<StudentOrderBy> list = q.getResultList();
+
+		cq.where(cb.between(stud.<Integer>get("s_age"), 22,26));
+		CriteriaQuery<StudentOrderBy> select = ((CriteriaQuery<StudentOrderBy>) cq).select(stud);
+		TypedQuery<StudentOrderBy> tq = em.createQuery(select);
+		List<StudentOrderBy> list = tq.getResultList();
+
+		System.out.println("Students having age between 22 and 26");
+
 		System.out.print("s_id");
 		System.out.print("\t s_name");
 		System.out.println("\t s_age");
+
 		for (StudentOrderBy s : list) {
 			System.out.print(s.getS_id());
 			System.out.print("\t" + s.getS_name());
 			System.out.println("\t" + s.getS_age());
 		}
+
 		em.getTransaction().commit();
 		em.close();
 		emf.close();

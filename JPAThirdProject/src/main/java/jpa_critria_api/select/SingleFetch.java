@@ -10,20 +10,22 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import jpa_critria_api.StudentOrderBy;
+
 public class SingleFetch {
 	public static void main(String args[]) {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAThirdProject");
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		CriteriaBuilder cb = em.getCriteriaBuilder();
-		CriteriaQuery<StudentCritriaSelect> cq = cb.createQuery(StudentCritriaSelect.class);
-		Root<StudentCritriaSelect> stud = cq.from(StudentCritriaSelect.class);
+		CriteriaQuery<StudentOrderBy> cq = cb.createQuery(StudentOrderBy.class);
+		Root<StudentOrderBy> stud = cq.from(StudentOrderBy.class);
 		cq.multiselect(stud.get("s_name"));
-		CriteriaQuery<StudentCritriaSelect> select = cq.select(stud);
-		TypedQuery<StudentCritriaSelect> q = em.createQuery(select);
-		List<StudentCritriaSelect> list = q.getResultList();
+		CriteriaQuery<StudentOrderBy> select = cq.select(stud);
+		TypedQuery<StudentOrderBy> q = em.createQuery(select);
+		List<StudentOrderBy> list = q.getResultList();
 		System.out.println("s_id");
-		for (StudentCritriaSelect s : list) {
+		for (StudentOrderBy s : list) {
 			System.out.println(s.getS_id());
 		}
 		em.getTransaction().commit();

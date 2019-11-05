@@ -1,21 +1,21 @@
-package jpa_critria_api.select;
+package jpa_critria_api;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "student_critria_select")
-public class StudentCritriaSelect {
+@Table(name = "student_order_by")
+public class StudentOrderBy {
 	@Id
 	private int s_id;
 	private String s_name;
 	private int s_age;
 
-	public StudentCritriaSelect() {
+	public StudentOrderBy() {
 	}
 
-	public StudentCritriaSelect(int s_id, String s_name, int s_age) {
+	public StudentOrderBy(int s_id, String s_name, int s_age) {
 		super();
 		this.s_id = s_id;
 		this.s_name = s_name;
