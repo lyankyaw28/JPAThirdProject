@@ -4,21 +4,37 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="JPAThirdProject">
+		<class>jpa_inheritance.table_per_class.EmployeeTablePerClass</class>
+		<class>jpa_inheritance.table_per_class.ActiveEmployeeTablePerClass1</class>
+		<class>jpa_inheritance.table_per_class.RetiredEmployeeTablePerClass</class>
+		<class>jpa_inheritance.joined.EmployeeJoined</class>
+		<class>jpa_inheritance.joined.ActiveEmployeeJoined</class>
+		<class>jpa_inheritance.joined.RetiredEmployeeJoined</class>
+		<class>jpa_inheritance.single_table.EmployeeSingleTable</class>
+		<class>jpa_inheritance.single_table.ActiveEmployeeSingleTable</class>
+		<class>jpa_inheritance.single_table.RetiredEmployeeSingleTable</class>
 		<class>jpa_critria_api.StudentOrderBy</class>
-		<!-- <class>jpa_jpql.advanced_options.StudentJPQLAdvancedOptions</class> -->
-		<!-- <class>jpa_jpql.bulk_data_operations.StudentBulkFetch</class> -->
-		<!-- <class>jpa_jpql.basic_operations.StudentStaticeQuery</class> -->
-		<!-- <class>jpa_jpql.basic_operations.StudentDynamicQuery</class> -->
-		<!-- <class>jpa_cascading.persist_remove.StudentPersistRemove</class> <class>jpa_cascading.persist_remove.SubjectPersistRemove</class> -->
-
-		<!-- <class>jpa_type_of_mapping.many_to_many.StudentMTM</class> <class>jpa_type_of_mapping.many_to_many.LibraryMTM</class> -->
-		<!-- <class>jpa_type_of_mapping.many_to_one.StudentMTO</class> <class>jpa_type_of_mapping.many_to_one.LibraryMTO</class> -->
-		<!-- <class>jpa_type_of_mapping.one_to_many.StudentOTM</class> <class>jpa_type_of_mapping.one_to_many.LibraryOTM</class> 
-			<class>jpa_type_of_mapping.one_to_one.StudentOTO</class> <class>jpa_type_of_mapping.one_to_one.LibraryOTO</class> 
-			<class>jpa_collection_mapping.map_mapping.Employee2</class> <class>jpa_collection_mapping.map_mapping.Address2</class> 
-			<class>jpa_collection_mapping.set_mapping.Employee1</class> <class>jpa_collection_mapping.set_mapping.Address1</class> 
-			<class>jpa_collection_mapping.list_mapping.Employee</class> <class>jpa_collection_mapping.list_mapping.Address</class> 
-			<class>jpa_entity_manager.StudentEntity</class> -->
+		<class>jpa_jpql.advanced_options.StudentJPQLAdvancedOptions</class>
+		<class>jpa_jpql.bulk_data_operations.StudentBulkFetch</class>
+		<class>jpa_jpql.basic_operations.StudentStaticeQuery</class>
+		<class>jpa_jpql.basic_operations.StudentDynamicQuery</class>
+		<class>jpa_cascading.persist_remove.StudentPersistRemove</class>
+		<class>jpa_cascading.persist_remove.SubjectPersistRemove</class>
+		<class>jpa_type_of_mapping.many_to_many.StudentMTM</class>
+		<class>jpa_type_of_mapping.many_to_many.LibraryMTM</class>
+		<class>jpa_type_of_mapping.many_to_one.StudentMTO</class>
+		<class>jpa_type_of_mapping.many_to_one.LibraryMTO</class>
+		<class>jpa_type_of_mapping.one_to_many.StudentOTM</class>
+		<class>jpa_type_of_mapping.one_to_many.LibraryOTM</class>
+		<class>jpa_type_of_mapping.one_to_one.StudentOTO</class>
+		<class>jpa_type_of_mapping.one_to_one.LibraryOTO</class>
+		<class>jpa_collection_mapping.map_mapping.Employee2</class>
+		<class>jpa_collection_mapping.map_mapping.Address2</class>
+		<class>jpa_collection_mapping.set_mapping.Employee1</class>
+		<class>jpa_collection_mapping.set_mapping.Address1</class>
+		<class>jpa_collection_mapping.list_mapping.Employee</class>
+		<class>jpa_collection_mapping.list_mapping.Address</class>
+		<class>jpa_entity_manager.StudentEntity</class>
 		<properties>
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
